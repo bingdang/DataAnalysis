@@ -25,3 +25,7 @@ go.mod                  go.sum                  kaifang-gbk.txt         kaifang-
 felix@MacBook-Pro 0319 % 
 
 ```
+### 思路：
+- 为每个省封装自己的对象，对象中写明名称，id（身份证前两位），对应的文件，管道
+- 将省份放入map中通过省份id取对应省份对象 并给管道写入数据。main.go第166行
+- 每个省份开一个协程处理数据从管道读出，并写入省份对应文件。main.go第182行
