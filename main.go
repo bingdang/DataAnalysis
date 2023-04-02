@@ -187,9 +187,9 @@ func ReadChenToWriteFile(psMap map[string]*Province) {
 
 // 写入各省文件
 func writeProvinceFile(province *Province) {
+	defer province.File.Close()
 	for LineStr := range province.Queue {
 		province.File.WriteString(LineStr + "\n")
-		defer province.File.Close()
 		fmt.Println(LineStr, "写入", province.Name)
 	}
 	wr.Done()
